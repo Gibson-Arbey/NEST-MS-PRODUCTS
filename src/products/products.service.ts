@@ -72,4 +72,22 @@ export class ProductsService extends PrismaClient implements OnModuleInit {
       },
     });
   }
+
+  async validateProduct(ids: number[]) {
+    ids = Array.from(new Set(ids));
+    const products = await this.product.findMany({
+      where: {
+        id: {
+          in: ids,
+        },
+      },
+    });
+    if (ids.length !== products.length) {
+      throw new RpcException({
+        message: `No se encontraron ${ids.length - products.length} producto(s)`,
+        status: HttpStatus.BAD_REQUEST,
+      });
+    }
+    return products;
+  }
 }
