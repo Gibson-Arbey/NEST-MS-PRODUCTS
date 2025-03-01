@@ -4,6 +4,9 @@
 
 # MS-PRODUCTS
 
+<img align="left" alt="Arquitectura" src="assets/arquitectura.png" style="margin: 10px">
+
+
 ## Levantar el proyecto
 
 1. Clonar el repositorio
